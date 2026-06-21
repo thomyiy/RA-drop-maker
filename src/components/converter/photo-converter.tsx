@@ -11,8 +11,15 @@ type Status = "idle" | "loading" | "done" | "error";
 /**
  * Outil d'atelier : l'utilisateur importe une photo (PNG/JPEG flat),
  * on la convertit en line art noir & blanc via l'API Gemini (/api/convert).
+ *
+ * `onResult` remonte le line art généré (data URL) au flow parent, ou `null`
+ * quand l'utilisateur change/retire sa photo.
  */
-export function PhotoConverter() {
+export function PhotoConverter({
+  onResult,
+}: {
+  onResult?: (dataUrl: string | null) => void;
+}) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
   const [originalUrl, setOriginalUrl] = useState<string | null>(null);
@@ -29,6 +36,7 @@ export function PhotoConverter() {
     setResultUrl(null);
     setStatus("idle");
     setError(null);
+    onResult?.(null);
     if (inputRef.current) inputRef.current.value = "";
   }
 
@@ -36,6 +44,7 @@ export function PhotoConverter() {
     setError(null);
     setResultUrl(null);
     setStatus("idle");
+    onResult?.(null);
     if (!selected) return;
 
     if (!ACCEPTED.includes(selected.type)) {
@@ -71,6 +80,7 @@ export function PhotoConverter() {
       }
       setResultUrl(data.dataUrl);
       setStatus("done");
+      onResult?.(data.dataUrl);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erreur inconnue.");
       setStatus("error");

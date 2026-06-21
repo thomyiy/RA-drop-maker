@@ -3,9 +3,10 @@
 App **minimale, pilotée par config + thème** : la page d'accueil se rend depuis
 `drop.config.ts` et le thème de `@thomyiy/themes`. Sert de base à copier pour un nouveau drop.
 
-> ⚠️ Ne pas développer de fonctionnalités spécifiques ici. Ce dossier reste **générique**.
-> Pour créer un drop, utiliser le skill **`/new-drop`** (ou `tooling/new-drop/scaffold.mjs`),
-> qui copie ce template vers `apps/<slug>` et seed `project/` depuis `playbook/`.
+> ⚠️ Rôle : **dogfood in-repo** — vérifie en CI que le cœur (`@thomyiy/*`) compose bien une
+> app via le workspace. **Ce n'est pas** le template d'un nouveau drop : un drop réel est un
+> **repo séparé** généré par `/new-drop` à partir de **`templates/drop/`** (qui consomme les
+> `@thomyiy/*` publiés). Cf. `docs/polyrepo-publication.md`.
 
 ## Contenu
 - `drop.config.ts` — squelette de config (brand, theme, flow, modules ops…)

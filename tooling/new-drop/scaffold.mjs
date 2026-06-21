@@ -48,6 +48,12 @@ writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + "\n");
 const cfgPath = join(dest, "drop.config.ts");
 writeFileSync(cfgPath, readFileSync(cfgPath, "utf8").replace("Nouveau drop", name));
 
+// Filtre pnpm du déploiement Railway → slug du drop.
+const railwayPath = join(dest, "railway.json");
+if (existsSync(railwayPath)) {
+  writeFileSync(railwayPath, readFileSync(railwayPath, "utf8").replaceAll("drop-template", slug));
+}
+
 // 3) Seed des docs de lancement depuis le playbook.
 const projectDir = join(dest, "project");
 mkdirSync(projectDir, { recursive: true });

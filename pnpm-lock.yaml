@@ -60,6 +60,9 @@ importers:
       '@ras/config':
         specifier: workspace:*
         version: link:../../packages/config
+      '@ras/core':
+        specifier: workspace:*
+        version: link:../../packages/core
       '@ras/themes':
         specifier: workspace:*
         version: link:../../packages/themes
@@ -119,7 +122,11 @@ importers:
         specifier: ^3.23.8
         version: 3.25.76
 
-  packages/core: {}
+  packages/core:
+    dependencies:
+      react:
+        specifier: '>=19'
+        version: 19.2.4
 
   packages/themes: {}
 

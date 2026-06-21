@@ -1,2 +1,3 @@
-// @ras/core — package partagé (stub). À remplir lors des phases suivantes.
-export const __pkg = "@ras/core";
+// @ras/core — flows d'achat composables (logique headless).
+// ConfiguratorFlow (ce module) · SimpleProductFlow · QuoteFlow (à venir).
+export * from "./configurator";

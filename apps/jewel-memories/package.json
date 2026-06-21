@@ -11,6 +11,7 @@
   "dependencies": {
     "@ras/commerce": "workspace:*",
     "@ras/config": "workspace:*",
+    "@ras/core": "workspace:*",
     "@ras/themes": "workspace:*",
     "next": "16.2.9",
     "react": "19.2.4",

@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useConfigurator } from "@ras/core";
 import { PhotoConverter } from "@/components/converter/photo-converter";
 import { Button } from "@/components/ui/button";
 import { LeadModal } from "./lead-modal";
@@ -22,46 +22,20 @@ import {
  */
 export function ConfiguratorFlow({ geminiReady }: { geminiReady: boolean }) {
   const router = useRouter();
-  const [supportId, setSupportId] = useState(pendantSupports[0].id);
-  const [materialId, setMaterialId] = useState(materials[0].id);
-  const [resultUrl, setResultUrl] = useState<string | null>(null);
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const support = pendantSupports.find((s) => s.id === supportId)!;
-  const material = materials.find((m) => m.id === materialId)!;
-  const price = support.basePrice + material.priceModifier;
+  // Logique du parcours mutualisée dans @ras/core (headless) :
+  const {
+    supportId, setSupportId,
+    materialId, setMaterialId,
+    resultUrl, setResultUrl,
+    modalOpen, setModalOpen,
+    support, material, price,
+    configSummary, canContinue, pay: handlePay,
+  } = useConfigurator({
+    supports: pendantSupports,
+    materials,
+    navigate: (path) => router.push(path),
+  });
   const priceLabel = formatPrice(price);
-
-  const configSummary = useMemo(
-    () => ({
-      support: support.name,
-      material: material.name,
-      price,
-      currency: "EUR",
-    }),
-    [support.name, material.name, price],
-  );
-
-  const canContinue = Boolean(resultUrl);
-
-  // Lance le paiement Stripe ; repli sur la page d'info si non configuré.
-  async function handlePay(email?: string) {
-    try {
-      const res = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ config: configSummary, email }),
-      });
-      const data = (await res.json()) as { url?: string };
-      if (res.ok && data.url) {
-        window.location.href = data.url;
-        return;
-      }
-    } catch {
-      /* repli ci-dessous */
-    }
-    router.push("/paiement");
-  }
 
   return (
     <div className="space-y-12">

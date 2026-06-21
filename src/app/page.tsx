@@ -7,7 +7,7 @@ import {
   howItWorksSteps,
   pendantSupports,
 } from "@/lib/config/catalog";
-import { formatMoney } from "@/lib/shopify";
+import { formatPrice } from "@/lib/format";
 
 export default function HomePage() {
   return (
@@ -127,11 +127,11 @@ function EngravingModes() {
     <section className="bg-sand/40 py-20">
       <SectionHeading
         eyebrow="Personnalisation"
-        title="Quatre façons de graver votre histoire"
-        subtitle="Texte, symbole ou photo : choisissez le mode qui raconte votre souvenir."
+        title="Trois façons de graver votre histoire"
+        subtitle="Photo en line art, texte ou symbole : choisissez le mode qui raconte votre souvenir."
       />
       <Container className="mt-12">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {engravingModes.map((mode) => (
             <div
               key={mode.id}
@@ -176,7 +176,7 @@ function Gallery() {
               <div className="mt-3 flex items-baseline justify-between">
                 <h3 className="text-base text-ink">{support.name}</h3>
                 <span className="text-sm text-ink-soft">
-                  dès {formatMoney({ amount: support.basePrice, currencyCode: "EUR" })}
+                  dès {formatPrice(support.basePrice)}
                 </span>
               </div>
               <p className="text-sm text-ink-soft">{support.shape}</p>

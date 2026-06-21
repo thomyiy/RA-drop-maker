@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { PageHeader } from "@/components/ui/page-header";
 import { ButtonLink } from "@/components/ui/button";
 import { materials, pendantSupports } from "@/lib/config/catalog";
-import { formatMoney } from "@/lib/shopify";
+import { formatPrice } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: "Nos modèles",
@@ -31,7 +31,7 @@ export default function ModelesPage() {
               <h2 className="mt-4 text-lg text-ink">{support.name}</h2>
               <p className="text-sm text-ink-soft">{support.shape}</p>
               <p className="mt-2 text-sm text-ink">
-                dès {formatMoney({ amount: support.basePrice, currencyCode: "EUR" })}
+                dès {formatPrice(support.basePrice)}
               </p>
             </article>
           ))}
@@ -50,7 +50,7 @@ export default function ModelesPage() {
                 <p className="mt-3 text-sm font-medium text-gold-dark">
                   {m.priceModifier === 0
                     ? "Inclus"
-                    : `+ ${formatMoney({ amount: m.priceModifier, currencyCode: "EUR" })}`}
+                    : `+ ${formatPrice(m.priceModifier)}`}
                 </p>
               </div>
             ))}

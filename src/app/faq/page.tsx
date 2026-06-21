@@ -15,7 +15,11 @@ const faq = [
   },
   {
     q: "Que puis-je faire graver ?",
-    a: "Un texte (prénom, date, message court), un symbole de notre bibliothèque, et bientôt une photo — y compris une version stylisée de votre image.",
+    a: "Une photo transformée en line art noir & blanc par notre IA, un texte (prénom, date, message court), ou un symbole de notre bibliothèque.",
+  },
+  {
+    q: "Comment fonctionne la conversion de ma photo ?",
+    a: "Vous importez une photo (PNG ou JPEG). Notre IA en extrait un tracé noir & blanc épuré, prêt à graver. Vous prévisualisez le résultat avant de commander.",
   },
   {
     q: "Quelles matières proposez-vous ?",

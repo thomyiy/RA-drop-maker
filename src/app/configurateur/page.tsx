@@ -1,50 +1,79 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
-import { ButtonLink } from "@/components/ui/button";
-import { engravingModes, materials, pendantSupports } from "@/lib/config/catalog";
+import { PhotoConverter } from "@/components/converter/photo-converter";
+import { isGeminiConfigured } from "@/lib/gemini";
+import { materials, pendantSupports } from "@/lib/config/catalog";
 
 export const metadata: Metadata = {
   title: "Créer mon pendentif",
   description:
-    "Composez votre pendentif gravé sur mesure : support, matière et gravure, avec aperçu en direct.",
+    "Importez une photo : notre IA la transforme en line art noir & blanc, prêt à graver sur votre pendentif.",
 };
 
+// La disponibilité de l'atelier dépend de l'environnement (clé Gemini) :
+// on évalue donc la page à chaque requête plutôt qu'au build.
+export const dynamic = "force-dynamic";
+
 /**
- * Configurateur — version d'amorçage (Phase 0).
+ * Configurateur — l'atelier de création.
  *
- * À ce stade, on pose la structure du parcours (support → matière → gravure
- * → aperçu). La logique interactive (canvas, upload, panier) sera implémentée
- * en Phase 2 et au-delà.
+ * Cœur du parcours : l'utilisateur importe une photo (PNG/JPEG) et obtient un
+ * line art noir & blanc généré par l'API Gemini. Le choix du support et de la
+ * matière encadre la composition.
  */
 export default function ConfigurateurPage() {
+  const ready = isGeminiConfigured();
+
   return (
     <Container className="py-12">
-      <div className="mb-8">
-        <p className="eyebrow mb-2">Configurateur</p>
-        <h1 className="text-3xl text-ink sm:text-4xl">Composez votre pendentif</h1>
+      <div className="mx-auto mb-10 max-w-2xl text-center">
+        <p className="eyebrow mb-2">L'atelier</p>
+        <h1 className="text-3xl text-ink sm:text-4xl">
+          Transformez votre photo en line art
+        </h1>
+        <p className="mt-3 text-ink-soft">
+          Importez une photo nette et bien cadrée. Notre IA la convertit en un
+          tracé noir & blanc épuré, prêt à être gravé sur votre pendentif.
+        </p>
       </div>
 
-      <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr]">
-        {/* Colonne de gauche : aperçu */}
-        <div className="lg:sticky lg:top-24 lg:self-start">
-          <div className="flex aspect-square items-center justify-center rounded-lg border border-line bg-gradient-to-br from-sand to-cream">
-            <div className="text-center">
-              <div className="font-serif text-3xl text-gold">Aperçu</div>
-              <p className="mt-2 text-sm text-ink-soft">
-                La prévisualisation en direct arrive en Phase 2.
-              </p>
-            </div>
-          </div>
+      {!ready && (
+        <div className="mx-auto mb-8 max-w-2xl rounded-lg border border-amber-300 bg-amber-50 px-5 py-4 text-sm text-amber-800">
+          ⚙️ La conversion nécessite une clé <code>GEMINI_API_KEY</code> côté
+          serveur. Ajoutez-la dans <code>.env.local</code> pour activer
+          l'atelier.
         </div>
+      )}
 
-        {/* Colonne de droite : étapes */}
-        <div className="space-y-10">
-          <Step n={1} title="Choisissez votre support">
+      <div className="mx-auto max-w-3xl">
+        <PhotoConverter />
+      </div>
+
+      {/* Conseils */}
+      <div className="mx-auto mt-12 max-w-3xl rounded-lg border border-line bg-sand/30 p-6">
+        <h2 className="text-lg text-ink">Pour un meilleur rendu</h2>
+        <ul className="mt-3 space-y-2 text-sm text-ink-soft">
+          <li>• Choisissez une photo nette, bien éclairée et contrastée.</li>
+          <li>• Cadrez sur le sujet (visage, animal, objet) sur fond simple.</li>
+          <li>• Les images « flat » (à plat, vue de face) donnent les plus beaux tracés.</li>
+        </ul>
+      </div>
+
+      {/* Support & matière (composition autour de la gravure) */}
+      <div className="mx-auto mt-16 max-w-3xl">
+        <h2 className="text-xl text-ink">Votre pendentif</h2>
+        <p className="mt-1 text-sm text-ink-soft">
+          Le line art sera gravé sur le support et la matière de votre choix.
+        </p>
+
+        <div className="mt-6 grid gap-6 sm:grid-cols-2">
+          <div>
+            <h3 className="mb-3 text-sm font-semibold text-ink">Support</h3>
             <div className="grid grid-cols-2 gap-3">
               {pendantSupports.map((s) => (
                 <div
                   key={s.id}
-                  className="rounded-lg border border-line p-4 text-sm hover:border-gold"
+                  className="rounded-lg border border-line p-3 text-sm hover:border-gold"
                 >
                   <span className="text-ink">{s.name}</span>
                   <br />
@@ -52,10 +81,11 @@ export default function ConfigurateurPage() {
                 </div>
               ))}
             </div>
-          </Step>
+          </div>
 
-          <Step n={2} title="Choisissez la matière">
-            <div className="flex flex-wrap gap-3">
+          <div>
+            <h3 className="mb-3 text-sm font-semibold text-ink">Matière</h3>
+            <div className="flex flex-wrap gap-2">
               {materials.map((m) => (
                 <span
                   key={m.id}
@@ -65,62 +95,9 @@ export default function ConfigurateurPage() {
                 </span>
               ))}
             </div>
-          </Step>
-
-          <Step n={3} title="Choisissez le mode de gravure">
-            <div className="grid gap-3 sm:grid-cols-2">
-              {engravingModes.map((mode) => (
-                <div
-                  key={mode.id}
-                  className="rounded-lg border border-line p-4 text-sm"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="text-ink">{mode.name}</span>
-                    {!mode.available && (
-                      <span className="text-[10px] font-semibold uppercase tracking-wider text-gold-dark">
-                        Bientôt
-                      </span>
-                    )}
-                  </div>
-                  <p className="mt-1 text-ink-soft">{mode.short}</p>
-                </div>
-              ))}
-            </div>
-          </Step>
-
-          <div className="rounded-lg border border-dashed border-gold/50 bg-gold/5 p-5 text-sm text-ink-soft">
-            🛠️ Le configurateur interactif (saisie, upload photo, aperçu en
-            direct sur le bijou et ajout au panier) sera développé dans les
-            prochaines phases. Cette page pose le parcours et le design.
           </div>
-
-          <ButtonLink href="/modeles" variant="outline">
-            ← Revenir aux modèles
-          </ButtonLink>
         </div>
       </div>
     </Container>
-  );
-}
-
-function Step({
-  n,
-  title,
-  children,
-}: {
-  n: number;
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <section>
-      <h2 className="mb-4 flex items-center gap-3 text-lg text-ink">
-        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink text-xs text-cream">
-          {n}
-        </span>
-        {title}
-      </h2>
-      {children}
-    </section>
   );
 }

@@ -24,13 +24,6 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link
-            href="/panier"
-            className="text-sm text-ink-soft transition-colors hover:text-ink"
-            aria-label="Panier"
-          >
-            Panier
-          </Link>
           <ButtonLink href="/configurateur" size="md" className="hidden sm:inline-flex">
             Créer mon pendentif
           </ButtonLink>

@@ -1,29 +1,41 @@
 # Jewel Memories
 
-Boutique de **pendentifs gravés sur mesure**. Le client compose son bijou en
-ligne (support, matière, gravure), prévisualise le rendu, puis commande.
-Inspiré du modèle de [thelma.pet](https://thelma.pet) (cadres personnalisés par
-IA), transposé au bijou gravé.
+Boutique de **pendentifs gravés sur mesure**. Le client importe une photo,
+notre IA la transforme en **line art noir & blanc** prêt à graver, puis il
+compose son bijou (support, matière). Inspiré du modèle de
+[thelma.pet](https://thelma.pet), transposé au bijou gravé.
 
 ## Stack
 
 - **Next.js 16** (App Router) + **TypeScript**
 - **Tailwind CSS v4**
-- **Shopify Storefront API** pour le commerce (paiement, commandes, stock) — _à brancher (Phase 3)_
+- **API Gemini** (`@google/genai`, modèle `gemini-2.5-flash-image`) pour la
+  conversion photo → line art
 - Polices : Cormorant Garamond (titres) + Inter (corps)
 
 ## Démarrage
 
 ```bash
 npm install
+cp .env.example .env.local   # puis renseignez GEMINI_API_KEY
 npm run dev
 ```
 
-Le site tourne sur [http://localhost:3000](http://localhost:3000) avec des
-**données mock** (`src/lib/config/catalog.ts`), sans dépendance externe.
+Le site tourne sur [http://localhost:3000](http://localhost:3000). Sans clé
+Gemini, le site fonctionne mais l'atelier de conversion affiche un message
+d'indisponibilité (le reste du contenu s'appuie sur des données mock dans
+`src/lib/config/catalog.ts`).
 
-Pour brancher Shopify : copier `.env.example` en `.env.local` et renseigner les
-identifiants Storefront.
+Obtenez une clé sur [Google AI Studio](https://aistudio.google.com/apikey).
+
+## Conversion photo → line art
+
+- **UI** : `src/components/converter/photo-converter.tsx` (composant client :
+  upload PNG/JPEG, aperçu avant/après, téléchargement).
+- **API** : `src/app/api/convert/route.ts` (POST `multipart/form-data`, champ
+  `image`) → renvoie `{ dataUrl }`.
+- **Modèle** : `src/lib/gemini.ts` envoie la photo + une consigne de style au
+  modèle d'image Gemini et récupère le tracé noir & blanc.
 
 ## Structure
 
@@ -35,29 +47,21 @@ src/
     modeles/            Supports & matières
     qualite/            Savoir-faire
     faq/                Questions fréquentes
-    configurateur/      Configurateur (parcours posé, interactivité en Phase 2)
-    panier/             Panier (checkout Shopify en Phase 3)
+    configurateur/      L'atelier : conversion photo → line art
+    api/convert/        Route serveur de conversion (Gemini)
     mentions-legales/ · cgv/ · confidentialite/
   components/
     layout/             Header, Footer, Logo
+    converter/          PhotoConverter (upload + conversion)
     ui/                 Container, Button, SectionHeading, PageHeader…
   lib/
+    gemini.ts           Appel API Gemini (line art)
+    format.ts           Formatage des prix
     config/             Données catalogue & site (mock)
-    shopify/            Couche commerce (mock → Shopify)
 ```
 
-## Feuille de route
+## Modes de gravure
 
-- **Phase 0 — Fondations** ✅ design system, pages vitrine, parcours configurateur
-- **Phase 2 —** configurateur interactif (texte + symboles, aperçu canvas)
-- **Phase 3 —** panier + checkout Shopify
-- **Phase 4 —** mode photo gravée (upload + filtre)
-- **Phase 5 —** mode photo stylisée (pipeline IA)
-- **Phase 6 —** SEO, responsive, RGPD, performance
-
-## Modes de gravure prévus
-
-1. **Texte** — prénom, date, message (police, taille, position)
-2. **Symbole** — bibliothèque de motifs
-3. **Photo gravée** — upload + rendu gravure
-4. **Photo stylisée** — transformation artistique IA puis gravure (effet signature)
+1. **Photo en line art** — upload + conversion IA (fonctionnalité phare)
+2. **Texte** — prénom, date, message (à venir : éditeur interactif)
+3. **Symbole** — bibliothèque de motifs (à venir)

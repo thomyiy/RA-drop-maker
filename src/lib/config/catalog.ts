@@ -2,14 +2,12 @@
  * Catalogue produit (données mock).
  *
  * Cette couche décrit les options du configurateur : supports de pendentifs,
- * matières et modes de gravure. À terme, ces données pourront provenir de
- * Shopify (produits + variantes + metafields), mais le configurateur s'appuie
- * sur cette structure stable côté front.
+ * matières et modes de gravure.
  */
 
 /** Mode de gravure proposé au client. */
 export type EngravingMode = {
-  id: "texte" | "photo" | "photo-stylisee" | "symbole";
+  id: "photo" | "texte" | "symbole";
   name: string;
   short: string;
   description: string;
@@ -18,6 +16,14 @@ export type EngravingMode = {
 };
 
 export const engravingModes: EngravingMode[] = [
+  {
+    id: "photo",
+    name: "Photo en line art",
+    short: "Votre photo transformée en trait",
+    description:
+      "Importez une photo (PNG ou JPEG) : notre IA la transforme en line art noir & blanc, prêt à graver. L'effet signature de Jewel Memories.",
+    available: true,
+  },
   {
     id: "texte",
     name: "Texte gravé",
@@ -33,22 +39,6 @@ export const engravingModes: EngravingMode[] = [
     description:
       "Sélectionnez un motif dans notre bibliothèque de symboles et composez votre pendentif.",
     available: true,
-  },
-  {
-    id: "photo",
-    name: "Photo gravée",
-    short: "Un visage, un animal, une empreinte",
-    description:
-      "Importez une photo, nous la transformons en gravure fidèle tracée au laser.",
-    available: false,
-  },
-  {
-    id: "photo-stylisee",
-    name: "Photo stylisée",
-    short: "Votre photo, réinventée",
-    description:
-      "Votre photo transformée dans un style artistique avant d'être gravée — l'effet signature de Jewel Memories.",
-    available: false,
   },
 ];
 

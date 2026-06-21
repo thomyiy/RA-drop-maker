@@ -10,6 +10,10 @@
 
 ## 1. Principes directeurs
 
+0. **Le repo contient TOUT pour lancer.** Pas seulement le template tech du site, mais aussi
+   le **savoir-faire de lancement** : roadmaps, brief, kit de marque, checklists marketing /
+   mise en ligne / légal. Code → `apps/` + `packages/` ; templates de lancement → `playbook/` ;
+   docs remplies d'un drop → `apps/<drop>/project/`.
 1. **Ce qui change par drop = 3 choses** : le **thème** (identité visuelle / artiste), le
    **contenu & produits**, et le **flow d'achat** (configurateur, achat simple, ou devis).
    Tout le reste est **mutualisé**.
@@ -40,7 +44,11 @@ atelier-stack/                      Turborepo + pnpm workspaces
 ├─ apps/
 │  ├─ _template/   app de départ qu'on copie pour un nouveau drop
 │  ├─ jewel-memories/      drop pilote (migré depuis l'app actuelle)
-│  └─ <prochain-drop>/     thin app : core + ui + 1 thème + drop.config.ts + env
+│  │  ├─ drop.config.ts    le spécifique-marque (validé par @ras/config)
+│  │  └─ project/          docs NON-code du drop : brief, roadmap, marketing, checklists
+│  └─ <prochain-drop>/     thin app : core + ui + 1 thème + drop.config.ts + project/
+├─ playbook/       lancement réutilisable : roadmap, brief, kit de marque,
+│                  checklists marketing / mise en ligne / légal
 ├─ design/
 │  └─ mockups/     générateur de deck PDF (lit les MÊMES tokens que themes/)
 ├─ tooling/

@@ -1,8 +1,8 @@
 import type { CSSProperties, ReactNode } from "react";
 
 /**
- * @ras/ui — composants thémables. Style via les variables CSS injectées par
- * @ras/themes (var(--color-*), var(--font-*), var(--radius-*)). Aucune dépendance
+ * @thomyiy/ui — composants thémables. Style via les variables CSS injectées par
+ * @thomyiy/themes (var(--color-*), var(--font-*), var(--radius-*)). Aucune dépendance
  * à Tailwind : utilisable par n'importe quel drop.
  */
 

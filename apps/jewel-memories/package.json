@@ -9,10 +9,10 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@ras/commerce": "workspace:*",
-    "@ras/config": "workspace:*",
-    "@ras/core": "workspace:*",
-    "@ras/themes": "workspace:*",
+    "@thomyiy/commerce": "workspace:*",
+    "@thomyiy/config": "workspace:*",
+    "@thomyiy/core": "workspace:*",
+    "@thomyiy/themes": "workspace:*",
     "next": "16.2.9",
     "react": "19.2.4",
     "react-dom": "19.2.4",

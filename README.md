@@ -1,11 +1,11 @@
 # RA-drop-maker — la fabrique à drops de Rainbow Ant Studio
 
 **Le kit complet pour lancer une marque / un projet.** Ce repo est la **fabrique** : le cœur
-publiable (`@ras/*`), les **outils** de lancement (`/new-drop`), le **playbook** (roadmaps,
+publiable (`@thomyiy/*`), les **outils** de lancement (`/new-drop`), le **playbook** (roadmaps,
 marketing, légal), et un **drop de référence** (`apps/jewel-memories`).
 
 > **Modèle polyrepo** : chaque projet/drop vit dans **son propre repo**, scaffoldé par ces
-> outils et consommant les libs `@ras/*` **publiées**. Cf. `docs/polyrepo-publication.md`.
+> outils et consommant les libs `@thomyiy/*` **publiées**. Cf. `docs/polyrepo-publication.md`.
 
 ## Démarrer
 
@@ -19,11 +19,11 @@ pnpm --filter jewel-memories dev   # une app en particulier
 
 | Dossier | Rôle |
 |---|---|
-| `packages/config`   | `@ras/config` — contrat d'un drop (schéma zod) |
-| `packages/themes`   | `@ras/themes` — tokens design (site + maquettes) |
-| `packages/ui`       | `@ras/ui` — composants thémables |
-| `packages/core`     | `@ras/core` — flows d'achat composables |
-| `packages/commerce` | `@ras/commerce` — Stripe, leads, conversion IA |
+| `packages/config`   | `@thomyiy/config` — contrat d'un drop (schéma zod) |
+| `packages/themes`   | `@thomyiy/themes` — tokens design (site + maquettes) |
+| `packages/ui`       | `@thomyiy/ui` — composants thémables |
+| `packages/core`     | `@thomyiy/core` — flows d'achat composables |
+| `packages/commerce` | `@thomyiy/commerce` — Stripe, leads, conversion IA |
 | `apps/*`            | les drops (sites) — code **+** `project/` (brief, roadmap, checklists remplis) |
 | `playbook/`         | **lancement** : roadmap, brief, kit de marque, checklists marketing/mise en ligne/légal |
 | `design/mockups`    | générateur de deck PDF |

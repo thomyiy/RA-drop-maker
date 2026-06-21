@@ -1,4 +1,4 @@
-import { defineDrop } from "@ras/config";
+import { defineDrop } from "@thomyiy/config";
 
 /**
  * Configuration du drop « Jewel Memories ».
@@ -16,7 +16,7 @@ export const dropConfig = defineDrop({
     domain: "jewel-memories.fr",
   },
 
-  theme: "editorial", // identité visuelle actuelle de l'app (cf. @ras/themes)
+  theme: "editorial", // identité visuelle actuelle de l'app (cf. @thomyiy/themes)
   flow: "configurator",
 
   catalog: [

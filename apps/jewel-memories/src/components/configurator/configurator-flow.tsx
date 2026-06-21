@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useConfigurator } from "@ras/core";
+import { useConfigurator } from "@thomyiy/core";
 import { PhotoConverter } from "@/components/converter/photo-converter";
 import { Button } from "@/components/ui/button";
 import { LeadModal } from "./lead-modal";
@@ -22,7 +22,7 @@ import {
  */
 export function ConfiguratorFlow({ geminiReady }: { geminiReady: boolean }) {
   const router = useRouter();
-  // Logique du parcours mutualisée dans @ras/core (headless) :
+  // Logique du parcours mutualisée dans @thomyiy/core (headless) :
   const {
     supportId, setSupportId,
     materialId, setMaterialId,

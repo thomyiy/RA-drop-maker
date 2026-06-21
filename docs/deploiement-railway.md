@@ -2,7 +2,7 @@
 
 Le monorepo se déploie en **un service Railway par app** (`apps/*`). Chaque service
 build/start son app via un filtre pnpm, depuis la racine du dépôt (pour résoudre les
-packages `@ras/*` du workspace).
+packages `@thomyiy/*` du workspace).
 
 ## Créer un service pour une app
 

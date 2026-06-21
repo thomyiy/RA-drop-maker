@@ -6,7 +6,7 @@ Docs **non-code** du drop (brief, roadmap, marketing, checklists). Les templates
 ## Snapshot
 - **Offre** : pendentifs gravés sur mesure d'après une photo / un prénom / un symbole
 - **Parcours d'achat** : `configurator` (photo → line art IA → aperçu → paiement)
-- **Thème** : `editorial` (cf. `@ras/themes`) · direction alternative explorée : `thelma`
+- **Thème** : `editorial` (cf. `@thomyiy/themes`) · direction alternative explorée : `thelma`
 - **Intégrations** : Stripe (paiement) · Notion (leads) · Gemini (conversion photo)
 - **Config technique** : [`../drop.config.ts`](../drop.config.ts)
 - **Maquettes** : `design/mockups` (deck PDF)

@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  transpilePackages: ["@ras/config", "@ras/themes", "@ras/ui"],
+  transpilePackages: ["@thomyiy/config", "@thomyiy/themes", "@thomyiy/ui"],
 };
 
 export default nextConfig;

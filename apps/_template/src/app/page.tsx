@@ -1,9 +1,9 @@
-import { Hero, Section } from "@ras/ui";
+import { Hero, Section } from "@thomyiy/ui";
 import { dropConfig } from "@drop";
 
 /**
- * Page d'accueil du template — composée depuis @ras/ui, pilotée par `drop.config.ts`.
- * À enrichir avec d'autres blocs (@ras/ui) et les flows (@ras/core).
+ * Page d'accueil du template — composée depuis @thomyiy/ui, pilotée par `drop.config.ts`.
+ * À enrichir avec d'autres blocs (@thomyiy/ui) et les flows (@thomyiy/core).
  */
 export default function Home() {
   const { brand, content, flow, theme } = dropConfig;
@@ -20,7 +20,7 @@ export default function Home() {
       <Section surface>
         <p style={{ fontSize: 13, color: "var(--color-mute)" }}>
           Template Rainbow Ant Studio · thème <strong>{theme}</strong> · flow <strong>{flow}</strong> · composé
-          avec <code>@ras/ui</code>, piloté par <code>drop.config.ts</code>.
+          avec <code>@thomyiy/ui</code>, piloté par <code>drop.config.ts</code>.
         </p>
       </Section>
     </main>

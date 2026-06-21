@@ -2,11 +2,11 @@
 
 Le **kit complet pour lancer une marque/projet** : le template tech **et** le savoir-faire de
 lancement (roadmaps, marketing, légal). Ce repo est la **fabrique** : un **cœur publiable**
-(`packages/@ras/*`), les **outils** (`/new-drop`), le **playbook**, et un **drop de
+(`packages/@thomyiy/*`), les **outils** (`/new-drop`), le **playbook**, et un **drop de
 référence** (`apps/jewel-memories`).
 
 > **Modèle polyrepo** : chaque drop vit dans **son propre repo**, scaffoldé par ces outils et
-> consommant `@ras/*` **publiés** (cf. `docs/polyrepo-publication.md`). `apps/*` ici sert au
+> consommant `@thomyiy/*` **publiés** (cf. `docs/polyrepo-publication.md`). `apps/*` ici sert au
 > dev/dogfood du cœur. Plan complet : **`docs/atelier-stack-plan.md`**.
 
 ## Règles d'or (non négociables)
@@ -14,8 +14,8 @@ référence** (`apps/jewel-memories`).
 1. **Ne forke jamais le cœur.** Le code spécifique à un drop vit **uniquement** dans son app
    (`apps/<drop>/`). Si un besoin est récurrent, il **remonte** dans `packages/*`, il ne se
    duplique pas.
-2. **Ce qui change par drop = 3 choses** : le **thème** (`@ras/themes`), le **contenu &
-   produits** (`drop.config.ts` de l'app), le **flow d'achat** (`@ras/core`). Tout le reste
+2. **Ce qui change par drop = 3 choses** : le **thème** (`@thomyiy/themes`), le **contenu &
+   produits** (`drop.config.ts` de l'app), le **flow d'achat** (`@thomyiy/core`). Tout le reste
    est mutualisé.
 3. **Intégrations pilotées par variables d'environnement** (Stripe, Notion, Gemini). Jamais
    de secret en dur.
@@ -27,17 +27,17 @@ référence** (`apps/jewel-memories`).
 
 ```
 packages/
-  config/    @ras/config    contrat d'un drop (schéma zod, defineDrop)
-  themes/    @ras/themes     tokens design → Tailwind preset + générateur PDF
-  ui/        @ras/ui         composants thémables (Hero, Steps, BeforeAfter…)
-  core/      @ras/core       flows : Configurator · SimpleProduct · Quote
-  commerce/  @ras/commerce   Stripe, leads (Notion/webhook), conversion IA (Gemini)
+  config/    @thomyiy/config    contrat d'un drop (schéma zod, defineDrop)
+  themes/    @thomyiy/themes     tokens design → Tailwind preset + générateur PDF
+  ui/        @thomyiy/ui         composants thémables (Hero, Steps, BeforeAfter…)
+  core/      @thomyiy/core       flows : Configurator · SimpleProduct · Quote
+  commerce/  @thomyiy/commerce   Stripe, leads (Notion/webhook), conversion IA (Gemini)
 apps/
   jewel-memories/            drop pilote (code)
-    drop.config.ts           le spécifique-marque (validé par @ras/config)
+    drop.config.ts           le spécifique-marque (validé par @thomyiy/config)
     project/                 docs NON-code du drop : brief, roadmap, marketing, checklists
 playbook/                    templates de lancement réutilisables (roadmap, marketing, légal…)
-design/mockups/              générateur de deck PDF (mêmes thèmes que @ras/themes)
+design/mockups/              générateur de deck PDF (mêmes thèmes que @thomyiy/themes)
 docs/                        plans & conventions
 ```
 
@@ -45,7 +45,7 @@ docs/                        plans & conventions
 > docs de lancement (brief, roadmap, checklists) vont dans `apps/<drop>/project/`, remplies à
 > partir des templates de `playbook/`.
 
-> État : les packages `@ras/*` sont des **stubs** ; ils sont remplis au fil des phases
+> État : les packages `@thomyiy/*` sont des **stubs** ; ils sont remplis au fil des phases
 > décrites dans `docs/atelier-stack-plan.md`.
 
 ## Outillage
@@ -64,5 +64,5 @@ remplit). Sous le capot :
 pnpm new-drop <slug> "<Nom de marque>"   # copie apps/_template → apps/<slug> + seed project/
 ```
 
-Puis remplir `apps/<slug>/drop.config.ts` (validé par `@ras/config`) et les docs
+Puis remplir `apps/<slug>/drop.config.ts` (validé par `@thomyiy/config`) et les docs
 `apps/<slug>/project/*.md` (issues de `playbook/`). Détails : `.claude/skills/new-drop/`.

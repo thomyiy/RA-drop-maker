@@ -32,7 +32,7 @@
 
 ## 6. Choix techniques (→ alimente `drop.config.ts`)
 - **Parcours d'achat** : `configurator` · `simple` · `quote`
-- **Thème** (`@ras/themes`) : `editorial` · `thelma` · *nouveau* :
+- **Thème** (`@thomyiy/themes`) : `editorial` · `thelma` · *nouveau* :
 - **Paiement** : `stripe` · `none`
 - **Leads/CRM** : `notion` · `webhook` · `none`
 - **IA** (conversion photo, etc.) : `gemini` · `none`

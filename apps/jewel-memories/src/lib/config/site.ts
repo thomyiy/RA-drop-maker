@@ -1,7 +1,7 @@
 import { dropConfig } from "@drop";
 
 /**
- * Configuration globale du site, **dérivée du drop** (@ras/config).
+ * Configuration globale du site, **dérivée du drop** (@thomyiy/config).
  * Le spécifique-marque vit dans `drop.config.ts` — ne pas dupliquer ici.
  */
 export const siteConfig = {

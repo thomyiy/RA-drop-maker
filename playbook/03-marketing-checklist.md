@@ -5,7 +5,7 @@
 ## A. Pré-lancement
 **Fondations**
 - [ ] Positionnement & message clé en une phrase
-- [ ] Page / formulaire **liste d'attente** (capture email → `@ras/commerce` leads)
+- [ ] Page / formulaire **liste d'attente** (capture email → `@thomyiy/commerce` leads)
 - [ ] Comptes réseaux créés (handles cohérents avec la marque)
 - [ ] Pixel/analytics installés (cf. checklist mise en ligne)
 

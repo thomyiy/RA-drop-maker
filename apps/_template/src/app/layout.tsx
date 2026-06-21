@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
-import { getTheme, themeCssVars } from "@ras/themes";
+import { getTheme, themeCssVars } from "@thomyiy/themes";
 import { dropConfig } from "@drop";
 import "./globals.css";
 

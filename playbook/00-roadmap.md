@@ -9,17 +9,17 @@ Template à copier dans `apps/<drop>/project/roadmap.md` et à dater. Chaque pha
 - [ ] Brief rempli (`01-brief.md`) : vision, cible, produit, positionnement
 - [ ] Modèle économique : prix, marge, coûts (fab, expédition, com)
 - [ ] Parcours d'achat décidé : `configurator` / `simple` / `quote`
-- [ ] Thème / direction artistique choisi (→ `@ras/themes` ou nouveau thème)
+- [ ] Thème / direction artistique choisi (→ `@thomyiy/themes` ou nouveau thème)
 - [ ] Échéance de lancement fixée
 
 ## Phase 1 — Identité & design  ·  *sortie : maquettes validées*
 - [ ] Kit de marque (`02-brand-kit.md`) : nom, logo, couleurs, typo, ton
-- [ ] Thème déclaré dans `@ras/themes` (tokens)
+- [ ] Thème déclaré dans `@thomyiy/themes` (tokens)
 - [ ] Maquettes générées (deck PDF via `design/mockups`) et validées
 - [ ] Validation artiste / partenaire si collab
 
 ## Phase 2 — Build  ·  *sortie : site fonctionnel en préprod*
-- [ ] App créée dans `apps/<drop>` (réutilise `@ras/core`, `@ras/ui`, `@ras/themes`)
+- [ ] App créée dans `apps/<drop>` (réutilise `@thomyiy/core`, `@thomyiy/ui`, `@thomyiy/themes`)
 - [ ] `drop.config.ts` rempli (brand, catalog, content, flow, integrations)
 - [ ] Pages clés en place + responsive
 - [ ] Intégrations branchées (paiement, leads, IA) en mode test
@@ -44,7 +44,7 @@ Template à copier dans `apps/<drop>/project/roadmap.md` et à dater. Chaque pha
 ## Phase 6 — Post-lancement  ·  *sortie : itérations*
 - [ ] Suivi métriques (trafic, conversion, panier moyen)
 - [ ] Relances / retargeting / UGC
-- [ ] Rétro : ce qui remonte dans le cœur `@ras/*` pour les prochains drops
+- [ ] Rétro : ce qui remonte dans le cœur `@thomyiy/*` pour les prochains drops
 
 ---
 

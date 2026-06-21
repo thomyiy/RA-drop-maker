@@ -1,8 +1,8 @@
-// Conversion photo → line art (Gemini) — mutualisée dans @ras/commerce.
+// Conversion photo → line art (Gemini) — mutualisée dans @thomyiy/commerce.
 export {
   isGeminiConfigured,
   convertToLineArt,
   GeminiNotConfiguredError,
   GeminiNoImageError,
-} from "@ras/commerce";
-export type { ConversionResult } from "@ras/commerce";
+} from "@thomyiy/commerce";
+export type { ConversionResult } from "@thomyiy/commerce";

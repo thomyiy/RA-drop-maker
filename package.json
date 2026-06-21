@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "packageManager": "pnpm@10.33.0",
-  "description": "Rainbow Ant Studio — fabrique à drops : cœur publiable (@ras/*) + outils de lancement.",
+  "description": "Rainbow Ant Studio — fabrique à drops : cœur publiable (@thomyiy/*) + outils de lancement.",
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",

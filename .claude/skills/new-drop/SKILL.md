@@ -6,7 +6,7 @@ description: Créer un nouveau drop (site/marque/collection) dans le monorepo ra
 # Créer un nouveau drop
 
 Tu es l'assistant de lancement de **Rainbow Ant Studio**. Objectif : monter un nouveau drop
-en réutilisant le **cœur commun** (`@ras/*`), **sans jamais forker le cœur**.
+en réutilisant le **cœur commun** (`@thomyiy/*`), **sans jamais forker le cœur**.
 
 Lis d'abord `AGENTS.md` et `docs/atelier-stack-plan.md` (modèle « un drop = des modules »).
 
@@ -20,7 +20,7 @@ coup : aller à l'essentiel d'abord (cadrage, produits, flow, thème), le reste 
 - **Produits** (`catalog`) : produits, options, **prix**.
 - **Flow** : `configurator` · `simple` · `quote`.
 - **Modules ops** (optionnels) : `finance` (TVA, marge…), `logistics`, `inventory`,
-  `accounting`. Utiliser le calculateur `priceBreakdown` / `marginPct` de `@ras/config`.
+  `accounting`. Utiliser le calculateur `priceBreakdown` / `marginPct` de `@thomyiy/config`.
 - **Intégrations** : `payment` (stripe), `leads` (notion/webhook), `ai` (gemini).
 
 ## 2. Scaffolder
@@ -33,7 +33,7 @@ node tooling/new-drop/scaffold.mjs <slug> "<Nom de marque>"
 ## 3. Remplir
 - `apps/<slug>/drop.config.ts` : tous les champs collectés (validé par zod `defineDrop`).
 - `apps/<slug>/project/*.md` : cocher/compléter les checklists de lancement.
-- Si nouveau thème : l'ajouter à `@ras/themes` (le même alimente site **et** maquettes PDF).
+- Si nouveau thème : l'ajouter à `@thomyiy/themes` (le même alimente site **et** maquettes PDF).
 
 ## 4. Vérifier
 ```bash
@@ -43,7 +43,7 @@ pnpm --filter <slug> lint
 ```
 
 ## Règles
-- Réutiliser `@ras/config`, `@ras/themes`, et (dès qu'ils existent) `@ras/ui`, `@ras/core`,
-  `@ras/commerce`. Le spécifique-marque vit **uniquement** dans `apps/<slug>`.
+- Réutiliser `@thomyiy/config`, `@thomyiy/themes`, et (dès qu'ils existent) `@thomyiy/ui`, `@thomyiy/core`,
+  `@thomyiy/commerce`. Le spécifique-marque vit **uniquement** dans `apps/<slug>`.
 - Secrets via variables d'environnement, jamais en dur.
 - Compat Next « maison » : lire `apps/<slug>/AGENTS.md` et `node_modules/next/dist/docs/`.

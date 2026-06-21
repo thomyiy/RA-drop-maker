@@ -17,13 +17,13 @@ importers:
 
   apps/_template:
     dependencies:
-      '@ras/config':
+      '@thomyiy/config':
         specifier: workspace:*
         version: link:../../packages/config
-      '@ras/themes':
+      '@thomyiy/themes':
         specifier: workspace:*
         version: link:../../packages/themes
-      '@ras/ui':
+      '@thomyiy/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       next:
@@ -57,16 +57,16 @@ importers:
 
   apps/jewel-memories:
     dependencies:
-      '@ras/commerce':
+      '@thomyiy/commerce':
         specifier: workspace:*
         version: link:../../packages/commerce
-      '@ras/config':
+      '@thomyiy/config':
         specifier: workspace:*
         version: link:../../packages/config
-      '@ras/core':
+      '@thomyiy/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@ras/themes':
+      '@thomyiy/themes':
         specifier: workspace:*
         version: link:../../packages/themes
       next:

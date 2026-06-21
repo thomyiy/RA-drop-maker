@@ -9,7 +9,7 @@
 - [ ] N° TVA intracommunautaire (si applicable) :
 
 ## Prix & marge (par produit)
-> Le calculateur est dans `@ras/config` : `priceBreakdown()` (HT/TVA/TTC) et `marginPct()`.
+> Le calculateur est dans `@thomyiy/config` : `priceBreakdown()` (HT/TVA/TTC) et `marginPct()`.
 
 | Produit | Prix TTC | Prix HT | TVA | Coût revient | Marge |
 |---|---|---|---|---|---|

@@ -1,7 +1,7 @@
 # Kit de marque
 
 À copier dans `apps/<drop>/project/brand-kit.md`. C'est le pont entre l'identité et le code :
-les couleurs/typo deviennent un **thème** dans `@ras/themes`.
+les couleurs/typo deviennent un **thème** dans `@thomyiy/themes`.
 
 ## Naming
 - **Nom** :
@@ -17,7 +17,7 @@ les couleurs/typo deviennent un **thème** dans `@ras/themes`.
 - **Logo** (fichier, variantes : couleur / mono / favicon) :
 - **Symbole / motif récurrent** :
 
-## Couleurs → thème `@ras/themes`
+## Couleurs → thème `@thomyiy/themes`
 | Token | Rôle | Valeur |
 |---|---|---|
 | `ink` | texte principal | |

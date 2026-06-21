@@ -3,7 +3,7 @@
 Ce dossier contient **tout le non-code** pour lancer un site / une marque / un projet :
 roadmaps, briefs, kit de marque, et checklists (marketing, mise en ligne, légal).
 
-> Le **code** vit dans `apps/*` + `packages/@ras/*`.
+> Le **code** vit dans `apps/*` + `packages/@thomyiy/*`.
 > Le **savoir-faire de lancement** vit ici, dans `playbook/`.
 > Le **projet concret** (docs remplies d'un drop) vit dans `apps/<drop>/project/`.
 
@@ -16,11 +16,11 @@ roadmaps, briefs, kit de marque, et checklists (marketing, mise en ligne, légal
 
 ## Contenu
 
-| Fichier | Rôle | Module `@ras/config` |
+| Fichier | Rôle | Module `@thomyiy/config` |
 |---|---|---|
 | `00-roadmap.md` | Roadmap type, de l'idée au lancement (phases + jalons) | — |
 | `01-brief.md` | Brief de projet/marque (à remplir au cadrage) | `brand` |
-| `02-brand-kit.md` | Identité : naming, ton, logo, couleurs/typo | `theme` (→ `@ras/themes`) |
+| `02-brand-kit.md` | Identité : naming, ton, logo, couleurs/typo | `theme` (→ `@thomyiy/themes`) |
 | `03-marketing-checklist.md` | Pré-lancement · Jour J · Post-lancement | — |
 | `04-launch-checklist.md` | Mise en ligne technique (domaine, paiement, SEO, perf…) | `integrations` |
 | `05-legal-checklist.md` | Mentions légales, CGV, RGPD (France) | — |
@@ -29,8 +29,8 @@ roadmaps, briefs, kit de marque, et checklists (marketing, mise en ligne, légal
 | `08-stock-production.md` | Mode de production, quantités, fournisseurs | `inventory` |
 | `09-compta-sav.md` | Facturation, retours, SAV | `accounting` |
 
-> Le **« form »** d'un drop = ces docs + le schéma `drop.config.ts` (validé par `@ras/config`).
+> Le **« form »** d'un drop = ces docs + le schéma `drop.config.ts` (validé par `@thomyiy/config`).
 > On les remplit **avec Claude Code**, projet par projet. Le calculateur fiscalité
-> (`priceBreakdown`, `marginPct`) est dans `@ras/config`.
+> (`priceBreakdown`, `marginPct`) est dans `@thomyiy/config`.
 
 Chaque checklist utilise des cases `- [ ]` : on coche dans la copie du projet, pas ici.

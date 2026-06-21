@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 /**
- * @ras/config — le contrat d'un « drop » (un site/marque/projet).
+ * @thomyiy/config — le contrat d'un « drop » (un site/marque/projet).
  * Même schéma pour tous les drops : c'est ce que l'on remplit par projet.
  */
 
@@ -115,7 +115,7 @@ export const Content = z
 
 export const Drop = z.object({
   brand: Brand,
-  /** Clé d'un thème de @ras/themes (ex. "editorial", "thelma"). */
+  /** Clé d'un thème de @thomyiy/themes (ex. "editorial", "thelma"). */
   theme: z.string(),
   flow: Flow,
   catalog: z.array(Product).default([]),

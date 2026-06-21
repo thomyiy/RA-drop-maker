@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   // Packages partagés du monorepo compilés à la volée (TS source).
-  transpilePackages: ["@ras/config", "@ras/themes", "@ras/commerce", "@ras/core"],
+  transpilePackages: ["@thomyiy/config", "@thomyiy/themes", "@thomyiy/commerce", "@thomyiy/core"],
 };
 
 export default nextConfig;

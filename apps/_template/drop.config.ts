@@ -1,4 +1,4 @@
-import { defineDrop } from "@ras/config";
+import { defineDrop } from "@thomyiy/config";
 
 /**
  * Config du drop — SQUELETTE à remplir (cf. playbook/ + skill /new-drop).
@@ -15,7 +15,7 @@ export const dropConfig = defineDrop({
     // domain: "mon-drop.fr",
   },
 
-  theme: "thelma", // clé d'un thème de @ras/themes ("editorial" | "thelma" | …)
+  theme: "thelma", // clé d'un thème de @thomyiy/themes ("editorial" | "thelma" | …)
   flow: "simple", // "configurator" | "simple" | "quote"
 
   catalog: [

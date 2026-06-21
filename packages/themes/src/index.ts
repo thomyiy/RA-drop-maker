@@ -1,7 +1,7 @@
 import themesData from "./themes.json";
 
 /**
- * @ras/themes — source unique des identités visuelles.
+ * @thomyiy/themes — source unique des identités visuelles.
  * Les tokens vivent dans `themes.json` → consommés par le site (TS) ET par le
  * générateur de maquettes PDF (Python lit le même fichier).
  */
@@ -37,7 +37,7 @@ export function getTheme(name: string): ThemeTokens {
   const t = themes[name];
   if (!t) {
     throw new Error(
-      `@ras/themes: thème inconnu « ${name} » (disponibles : ${themeNames.join(", ")})`,
+      `@thomyiy/themes: thème inconnu « ${name} » (disponibles : ${themeNames.join(", ")})`,
     );
   }
   return t;

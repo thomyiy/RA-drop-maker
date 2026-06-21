@@ -9,7 +9,8 @@
     "build": "turbo run build",
     "lint": "turbo run lint",
     "start": "turbo run start",
-    "typecheck": "turbo run typecheck"
+    "typecheck": "turbo run typecheck",
+    "new-drop": "node tooling/new-drop/scaffold.mjs"
   },
   "devDependencies": {
     "turbo": "^2.5.8"

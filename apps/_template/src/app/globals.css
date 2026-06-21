@@ -1,0 +1,17 @@
+/* Reset minimal. Les couleurs/typos viennent du thème (@ras/themes),
+   injecté en variables CSS sur <html> dans layout.tsx. */
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+}

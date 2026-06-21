@@ -52,9 +52,14 @@ docs/                        plans & conventions
 - Déploiement cible : **Railway** (un service par app, build pnpm filtré).
 - Versionnage du cœur : semver + `changesets` (à mettre en place en Phase 3).
 
-## Créer un nouveau drop (à venir — Phase 3)
+## Créer un nouveau drop
 
-Le workflow cible : copier `apps/_template`, choisir un thème, remplir `drop.config.ts`, et
-copier les templates de `playbook/` dans `apps/<drop>/project/` pour piloter le lancement
-(roadmap, marketing, mise en ligne, légal). Tant que l'outillage n'est pas en place, suivre
-`docs/atelier-stack-plan.md` et le `playbook/`.
+Utiliser le skill **`/new-drop`** (Claude Code pose les questions des modules, scaffolde et
+remplit). Sous le capot :
+
+```bash
+pnpm new-drop <slug> "<Nom de marque>"   # copie apps/_template → apps/<slug> + seed project/
+```
+
+Puis remplir `apps/<slug>/drop.config.ts` (validé par `@ras/config`) et les docs
+`apps/<slug>/project/*.md` (issues de `playbook/`). Détails : `.claude/skills/new-drop/`.

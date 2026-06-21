@@ -54,12 +54,9 @@ importers:
 
   apps/jewel-memories:
     dependencies:
-      '@google/genai':
-        specifier: ^2.9.0
-        version: 2.9.0
-      '@notionhq/client':
-        specifier: ^5.22.0
-        version: 5.22.0
+      '@ras/commerce':
+        specifier: workspace:*
+        version: link:../../packages/commerce
       '@ras/config':
         specifier: workspace:*
         version: link:../../packages/config
@@ -104,7 +101,17 @@ importers:
         specifier: ^5
         version: 5.9.3
 
-  packages/commerce: {}
+  packages/commerce:
+    dependencies:
+      '@google/genai':
+        specifier: ^2.9.0
+        version: 2.9.0
+      '@notionhq/client':
+        specifier: ^5.22.0
+        version: 5.22.0
+      stripe:
+        specifier: ^22.2.2
+        version: 22.2.2(@types/node@20.19.43)
 
   packages/config:
     dependencies:

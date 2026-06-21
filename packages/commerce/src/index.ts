@@ -1,2 +1,5 @@
-// @ras/commerce — package partagé (stub). À remplir lors des phases suivantes.
-export const __pkg = "@ras/commerce";
+// @ras/commerce — back-office mutualisé : paiement (Stripe), leads (Notion),
+// conversion IA (Gemini). Piloté par variables d'environnement.
+export * from "./stripe";
+export * from "./leads";
+export * from "./ai";

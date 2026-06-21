@@ -1,12 +1,26 @@
 {
   "name": "@ras/config",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
-  "exports": { ".": "./src/index.ts" },
+  "exports": {
+    ".": "./src/index.ts"
+  },
   "dependencies": {
     "zod": "^3.23.8"
-  }
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thomyiy/RA-drop-maker.git",
+    "directory": "packages/config"
+  },
+  "files": [
+    "src"
+  ]
 }

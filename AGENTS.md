@@ -1,10 +1,13 @@
-# Rainbow Ant Studio — monorepo (`ras-stack`)
+# Rainbow Ant Studio — `RA-drop-maker` (la fabrique à drops)
 
 Le **kit complet pour lancer une marque/projet** : le template tech **et** le savoir-faire de
-lancement (roadmaps, marketing, légal). Monorepo de l'atelier : un **cœur commun**
-(`packages/@ras/*`) réutilisé par chaque **drop** (`apps/*` — produits, art, bijoux, collabs),
-plus un **playbook** d'ops/marketing. Plan d'architecture complet :
-**`docs/atelier-stack-plan.md`** (à lire avant tout changement structurel).
+lancement (roadmaps, marketing, légal). Ce repo est la **fabrique** : un **cœur publiable**
+(`packages/@ras/*`), les **outils** (`/new-drop`), le **playbook**, et un **drop de
+référence** (`apps/jewel-memories`).
+
+> **Modèle polyrepo** : chaque drop vit dans **son propre repo**, scaffoldé par ces outils et
+> consommant `@ras/*` **publiés** (cf. `docs/polyrepo-publication.md`). `apps/*` ici sert au
+> dev/dogfood du cœur. Plan complet : **`docs/atelier-stack-plan.md`**.
 
 ## Règles d'or (non négociables)
 

@@ -13,8 +13,8 @@ type Props = {
   priceLabel: string;
   /** Résumé de config transmis avec le lead. */
   config: Record<string, unknown>;
-  /** Déclenché quand l'utilisateur passe au paiement. */
-  onPay: () => void;
+  /** Déclenché quand l'utilisateur passe au paiement (email capturé en argument). */
+  onPay: (email?: string) => void | Promise<void>;
 };
 
 type Status = "capture" | "submitting" | "revealed";
@@ -37,6 +37,7 @@ export function LeadModal({
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [capturedEmail, setCapturedEmail] = useState<string | null>(null);
+  const [paying, setPaying] = useState(false);
 
   // Fermeture au clavier (Échap) + verrouillage du scroll de fond.
   useEffect(() => {
@@ -190,8 +191,20 @@ export function LeadModal({
                 </p>
               )}
               <p className="mt-4 text-3xl text-ink">{priceLabel}</p>
-              <Button size="lg" className="mt-5 w-full" onClick={onPay}>
-                Procéder au paiement
+              <Button
+                size="lg"
+                className="mt-5 w-full"
+                disabled={paying}
+                onClick={async () => {
+                  setPaying(true);
+                  try {
+                    await onPay(capturedEmail ?? undefined);
+                  } finally {
+                    setPaying(false);
+                  }
+                }}
+              >
+                {paying ? "Redirection…" : "Procéder au paiement"}
               </Button>
               <button
                 onClick={onClose}

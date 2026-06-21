@@ -44,6 +44,25 @@ export function ConfiguratorFlow({ geminiReady }: { geminiReady: boolean }) {
 
   const canContinue = Boolean(resultUrl);
 
+  // Lance le paiement Stripe ; repli sur la page d'info si non configuré.
+  async function handlePay(email?: string) {
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ config: configSummary, email }),
+      });
+      const data = (await res.json()) as { url?: string };
+      if (res.ok && data.url) {
+        window.location.href = data.url;
+        return;
+      }
+    } catch {
+      /* repli ci-dessous */
+    }
+    router.push("/paiement");
+  }
+
   return (
     <div className="space-y-12">
       {/* Étape 1 — Support */}
@@ -110,7 +129,7 @@ export function ConfiguratorFlow({ geminiReady }: { geminiReady: boolean }) {
           previewUrl={resultUrl}
           priceLabel={priceLabel}
           config={configSummary}
-          onPay={() => router.push("/paiement")}
+          onPay={handlePay}
         />
       )}
     </div>

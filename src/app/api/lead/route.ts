@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { createNotionLead, isNotionConfigured } from "@/lib/notion";
 
 export const runtime = "nodejs";
 
@@ -47,9 +48,10 @@ async function verifyGoogleCredential(
 }
 
 /**
- * Enregistre le lead. Si LEAD_WEBHOOK_URL est défini, on le transmet (ex. CRM,
- * Zapier, Make, Notion…). Sinon, on le journalise — à brancher sur le canal
- * définitif (base de données, email, CRM).
+ * Enregistre le lead. Destinations (par ordre de priorité) :
+ *   1. Notion          si NOTION_TOKEN + NOTION_LEADS_DATABASE_ID
+ *   2. Webhook         si LEAD_WEBHOOK_URL (CRM, Zapier, Make…)
+ *   3. Journal serveur (repli)
  */
 async function persistLead(lead: {
   email: string;
@@ -57,6 +59,24 @@ async function persistLead(lead: {
   source: "email" | "google";
   config?: Record<string, unknown>;
 }) {
+  const cfg = lead.config ?? {};
+
+  if (isNotionConfigured()) {
+    try {
+      await createNotionLead({
+        email: lead.email,
+        name: lead.name,
+        source: lead.source,
+        support: typeof cfg.support === "string" ? cfg.support : undefined,
+        material: typeof cfg.material === "string" ? cfg.material : undefined,
+        price: typeof cfg.price === "number" ? cfg.price : undefined,
+      });
+      return;
+    } catch (err) {
+      console.error("[/api/lead] échec Notion:", err);
+    }
+  }
+
   const webhook = process.env.LEAD_WEBHOOK_URL;
   if (webhook) {
     try {
@@ -70,6 +90,7 @@ async function persistLead(lead: {
       console.error("[/api/lead] échec du webhook:", err);
     }
   }
+
   console.log("[/api/lead] nouveau lead:", JSON.stringify(lead));
 }
 

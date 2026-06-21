@@ -35,6 +35,29 @@ export const dropConfig = defineDrop({
     leads: "notion",
     ai: "gemini",
   },
+
+  // Modules ops (remplis pour ce drop) :
+  finance: {
+    currency: "EUR",
+    vatRate: 20, // bijoux : TVA standard
+    pricesIncludeVat: true, // prix catalogue TTC
+    regime: "reel",
+  },
+  inventory: {
+    mode: "made-to-order", // gravé à la commande, pas de surstock
+    suppliers: [],
+  },
+  logistics: {
+    carriers: ["Colissimo"],
+    leadTimeDays: [7, 10],
+    zones: ["FR", "UE"],
+    tracking: true,
+  },
+  accounting: {
+    invoicing: "stripe",
+    // Produit personnalisé → pas de rétractation (art. L221-28 C. conso.)
+    returns: { enabled: false, note: "Personnalisé : non remboursable (hors défaut)." },
+  },
 });
 
 export default dropConfig;

@@ -81,6 +81,31 @@ Les packages ne dépendent jamais d'une app. `commerce` ne dépend pas de `ui` (
 
 ---
 
+## 3 bis. Un drop = des **modules** (le « form » = schémas remplis par Claude Code)
+
+`ras-stack` est l'**outil de lancement** : chaque drop se décrit en modules structurés.
+Décision validée : le **« form » = les schémas** (`drop.config.ts` + docs `project/`),
+**remplis avec Claude Code** (pas d'UI dédiée pour l'instant ; option ouverte plus tard).
+
+| Module | Données (schéma `@ras/config`) | Doc (`playbook/` → `project/`) | Code |
+|---|---|---|---|
+| Cadrage | `brand` | `01-brief` | — |
+| Identité / design | `theme` | `02-brand-kit` | `@ras/themes` |
+| Produits | `catalog` | (brief) | `@ras/core` |
+| **Fiscalité & finance** | `finance` (+ `priceBreakdown`, `marginPct`) | `06-fiscalite-finance` | — |
+| **Logistique** | `logistics` | `07-logistique` | — |
+| **Stock & production** | `inventory` | `08-stock-production` | — |
+| **Compta & SAV** | `accounting` | `09-compta-sav` | — |
+| Site (tech) | `flow`, `integrations` | `04-launch` | `apps/<drop>` + `@ras/*` |
+| Marketing | — | `03-marketing` | — |
+| Légal | — | `05-legal` | routes légales |
+
+> **Extensible par design** : un nouveau besoin = un nouveau module (schéma optionnel dans
+> `@ras/config` + template `playbook/`). Les champs des modules ops sont **optionnels** : un
+> drop ne remplit que ce qui le concerne.
+
+---
+
 ## 4. Le contrat : `drop.config.ts`
 
 Un drop = **un fichier validé**, même schéma pour tous. C'est ce que Claude Code remplit.

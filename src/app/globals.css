@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+/*
+  Jewel Memories — Design system
+  Palette artisanale & raffinée : encre profonde, or chaud, crème, neutres doux.
+*/
+@theme {
+  /* Couleurs de marque */
+  --color-ink: #1c1a17; /* texte / fonds sombres */
+  --color-ink-soft: #4a463f;
+  --color-cream: #f7f3ec; /* fond principal */
+  --color-sand: #efe8dc;
+  --color-gold: #b08d57; /* accent or */
+  --color-gold-soft: #c9ad83;
+  --color-gold-dark: #8a6d3f;
+  --color-line: #e3dccf; /* bordures discrètes */
+
+  /* Aliases sémantiques */
+  --color-background: var(--color-cream);
+  --color-foreground: var(--color-ink);
+
+  /* Typographies (chargées via next/font) */
+  --font-serif: var(--font-display), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-body), system-ui, -apple-system, sans-serif;
+
+  /* Rayons */
+  --radius-sm: 0.375rem;
+  --radius: 0.625rem;
+  --radius-lg: 1rem;
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Surtitre (eyebrow) */
+.eyebrow {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-gold-dark);
+}

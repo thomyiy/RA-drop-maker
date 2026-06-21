@@ -1,14 +1,16 @@
+import { dropConfig } from "@drop";
+
 /**
- * Configuration globale du site (nom, navigation, coordonnées).
+ * Configuration globale du site, **dérivée du drop** (@ras/config).
+ * Le spécifique-marque vit dans `drop.config.ts` — ne pas dupliquer ici.
  */
 export const siteConfig = {
-  name: "Jewel Memories",
-  tagline: "Vos souvenirs, gravés pour toujours",
-  description:
-    "Des pendentifs gravés sur mesure d'après vos souvenirs : un prénom, une photo, un symbole.",
-  email: "contact@jewel-memories.com",
-  instagram: "https://instagram.com/jewelmemories",
-} as const;
+  name: dropConfig.brand.name,
+  tagline: dropConfig.brand.tagline,
+  description: dropConfig.brand.description,
+  email: dropConfig.brand.email,
+  instagram: dropConfig.brand.instagram ?? "",
+};
 
 export type NavItem = {
   label: string;

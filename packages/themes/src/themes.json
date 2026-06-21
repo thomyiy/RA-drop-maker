@@ -1,0 +1,44 @@
+{
+  "editorial": {
+    "name": "editorial",
+    "label": "Éditorial joaillerie",
+    "color": {
+      "ink": "#1C1A17",
+      "inkSoft": "#4A463F",
+      "mute": "#8A8175",
+      "bg": "#F7F3EC",
+      "surface": "#FBF8F2",
+      "sand": "#EFE8DC",
+      "line": "#E3DCCF",
+      "lineStrong": "#D6CCBA",
+      "accent": "#B08D57",
+      "accentDark": "#8A6D3F",
+      "accentSoft": "#C9AD83",
+      "onAccent": "#FFFFFF",
+      "onInk": "#F7F3EC"
+    },
+    "font": { "display": "Cormorant Garamond", "body": "Inter" },
+    "radius": { "card": 12, "button": 999 }
+  },
+  "thelma": {
+    "name": "thelma",
+    "label": "Moderne photo-driven",
+    "color": {
+      "ink": "#1A1714",
+      "inkSoft": "#46413A",
+      "mute": "#928A7D",
+      "bg": "#FFFFFF",
+      "surface": "#F6F3ED",
+      "sand": "#E9E2D5",
+      "line": "#E5DFD3",
+      "lineStrong": "#D6CCBA",
+      "accent": "#B07C5B",
+      "accentDark": "#8F6244",
+      "accentSoft": "#C99B7C",
+      "onAccent": "#FFFFFF",
+      "onInk": "#FFFFFF"
+    },
+    "font": { "display": "Bricolage Grotesque", "body": "Outfit" },
+    "radius": { "card": 4, "button": 6 }
+  }
+}

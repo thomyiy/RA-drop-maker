@@ -11,6 +11,8 @@
   "dependencies": {
     "@google/genai": "^2.9.0",
     "@notionhq/client": "^5.22.0",
+    "@ras/config": "workspace:*",
+    "@ras/themes": "workspace:*",
     "next": "16.2.9",
     "react": "19.2.4",
     "react-dom": "19.2.4",

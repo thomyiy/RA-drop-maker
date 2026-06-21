@@ -1,67 +1,30 @@
-# Jewel Memories
+# ras-stack — Rainbow Ant Studio
 
-Boutique de **pendentifs gravés sur mesure**. Le client importe une photo,
-notre IA la transforme en **line art noir & blanc** prêt à graver, puis il
-compose son bijou (support, matière). Inspiré du modèle de
-[thelma.pet](https://thelma.pet), transposé au bijou gravé.
+Monorepo de l'atelier : un **cœur commun** réutilisable (`packages/@ras/*`) et un dossier par
+**drop** (`apps/*` — produits, art, bijoux, collabs artistes).
 
-## Stack
-
-- **Next.js 16** (App Router) + **TypeScript**
-- **Tailwind CSS v4**
-- **API Gemini** (`@google/genai`, modèle `gemini-2.5-flash-image`) pour la
-  conversion photo → line art
-- Polices : Cormorant Garamond (titres) + Inter (corps)
-
-## Démarrage
+## Démarrer
 
 ```bash
-npm install
-cp .env.example .env.local   # puis renseignez GEMINI_API_KEY
-npm run dev
+pnpm install
+pnpm dev          # lance les apps en dev (via turbo)
+pnpm --filter jewel-memories dev   # une app en particulier
 ```
-
-Le site tourne sur [http://localhost:3000](http://localhost:3000). Sans clé
-Gemini, le site fonctionne mais l'atelier de conversion affiche un message
-d'indisponibilité (le reste du contenu s'appuie sur des données mock dans
-`src/lib/config/catalog.ts`).
-
-Obtenez une clé sur [Google AI Studio](https://aistudio.google.com/apikey).
-
-## Conversion photo → line art
-
-- **UI** : `src/components/converter/photo-converter.tsx` (composant client :
-  upload PNG/JPEG, aperçu avant/après, téléchargement).
-- **API** : `src/app/api/convert/route.ts` (POST `multipart/form-data`, champ
-  `image`) → renvoie `{ dataUrl }`.
-- **Modèle** : `src/lib/gemini.ts` envoie la photo + une consigne de style au
-  modèle d'image Gemini et récupère le tracé noir & blanc.
 
 ## Structure
 
-```
-src/
-  app/                  Pages (App Router)
-    page.tsx            Accueil
-    comment-ca-marche/  Le processus
-    modeles/            Supports & matières
-    qualite/            Savoir-faire
-    faq/                Questions fréquentes
-    configurateur/      L'atelier : conversion photo → line art
-    api/convert/        Route serveur de conversion (Gemini)
-    mentions-legales/ · cgv/ · confidentialite/
-  components/
-    layout/             Header, Footer, Logo
-    converter/          PhotoConverter (upload + conversion)
-    ui/                 Container, Button, SectionHeading, PageHeader…
-  lib/
-    gemini.ts           Appel API Gemini (line art)
-    format.ts           Formatage des prix
-    config/             Données catalogue & site (mock)
-```
+| Dossier | Rôle |
+|---|---|
+| `packages/config`   | `@ras/config` — contrat d'un drop (schéma zod) |
+| `packages/themes`   | `@ras/themes` — tokens design (site + maquettes) |
+| `packages/ui`       | `@ras/ui` — composants thémables |
+| `packages/core`     | `@ras/core` — flows d'achat composables |
+| `packages/commerce` | `@ras/commerce` — Stripe, leads, conversion IA |
+| `apps/*`            | les drops (sites) |
+| `design/mockups`    | générateur de deck PDF |
+| `docs/`             | plans & conventions |
 
-## Modes de gravure
+📐 Architecture & feuille de route : [`docs/atelier-stack-plan.md`](docs/atelier-stack-plan.md)
+🤖 Conventions pour Claude Code : [`AGENTS.md`](AGENTS.md)
 
-1. **Photo en line art** — upload + conversion IA (fonctionnalité phare)
-2. **Texte** — prénom, date, message (à venir : éditeur interactif)
-3. **Symbole** — bibliothèque de motifs (à venir)
+Déploiement : **Railway** · Gestionnaire de paquets : **pnpm** + **Turborepo**.

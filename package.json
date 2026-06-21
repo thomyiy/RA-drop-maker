@@ -1,29 +1,26 @@
 {
-  "name": "jewel-memories",
-  "version": "0.1.0",
+  "name": "ras-stack",
+  "version": "0.0.0",
   "private": true,
+  "packageManager": "pnpm@10.33.0",
+  "description": "Rainbow Ant Studio — monorepo : cœur commun (@ras/*) + drops (apps/*).",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "@google/genai": "^2.9.0",
-    "@notionhq/client": "^5.22.0",
-    "next": "16.2.9",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
-    "stripe": "^22.2.2"
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "start": "turbo run start",
+    "typecheck": "turbo run typecheck"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.2.9",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "turbo": "^2.5.8"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp",
+      "@google/genai",
+      "protobufjs",
+      "unrs-resolver",
+      "esbuild"
+    ]
   }
 }
